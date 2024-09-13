@@ -1,0 +1,1517 @@
+{
+  "version": "2.2.0",
+  "summary": {
+    "title": "Student Website Threat Model",
+    "owner": "Teacher",
+    "description": "Whole system for a containerized website on cloud node.",
+    "id": 0
+  },
+  "detail": {
+    "contributors": [],
+    "diagrams": [
+      {
+        "id": 0,
+        "title": "System STRIDE",
+        "diagramType": "STRIDE",
+        "placeholder": "New STRIDE diagram description",
+        "thumbnail": "./public/content/images/thumbnail.stride.jpg",
+        "version": "2.2.0",
+        "cells": [
+          {
+            "position": {
+              "x": 561.9999999999992,
+              "y": 331.0000000000008
+            },
+            "size": {
+              "width": 400,
+              "height": 210
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Trust Boundary | Container"
+              }
+            },
+            "zIndex": -1,
+            "id": "3c13b32e-7b1b-4b86-affc-7231ef8fe4b7",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary | Container",
+              "description": "Port 8080 open for web traffic, goes through 80 on host",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 550,
+              "y": 291
+            },
+            "size": {
+              "width": 410,
+              "height": 270
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Trust Boundary | Docker Engine"
+              }
+            },
+            "zIndex": -1,
+            "id": "cf7631d7-f562-4488-b5db-801cc1d9e712",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary | Docker Engine",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 530,
+              "y": 170
+            },
+            "size": {
+              "width": 1170,
+              "height": 470
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Trust Boundary | Server"
+              }
+            },
+            "zIndex": -1,
+            "id": "0daae497-3575-47f3-9a3f-0fb8cd1abd94",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary | Server",
+              "description": "Port 80 Forwards to 8080 on container. SSH connection on port 9999. Everything else closed.",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 1000,
+              "y": 210
+            },
+            "size": {
+              "width": 520,
+              "height": 370
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Trust Boundary | User space"
+              }
+            },
+            "zIndex": -1,
+            "id": "21b0bd9b-0dd1-4f3b-8b22-10a732650689",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary | User space",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 550,
+              "y": 845.0000000000002
+            },
+            "size": {
+              "width": 1030,
+              "height": 250
+            },
+            "shape": "trust-boundary-box",
+            "attrs": {
+              "headerText": {
+                "text": "Trust Boundary | Student pc"
+              }
+            },
+            "zIndex": -1,
+            "id": "b7bb9115-9689-4397-bbd9-84325f77b00c",
+            "data": {
+              "type": "tm.BoundaryBox",
+              "name": "Trust Boundary | Student pc",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            }
+          },
+          {
+            "position": {
+              "x": 180,
+              "y": 430
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Browser"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 1,
+            "id": "23047851-f0a1-41d6-a3e2-f2da7f19ac1d",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Browser",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 561.9999999999992,
+              "y": 430
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Web \nApplication"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 2,
+            "id": "b173da5f-fbdf-47a2-824e-166d8b9a8097",
+            "data": {
+              "type": "tm.Process",
+              "name": "Web \nApplication",
+              "description": "Engine",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "de19e6ee-4899-4073-b242-bac2a10c8fb5",
+                  "title": "Web Application DoS Attack",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Denial of service",
+                  "description": "An attacker can overload the web server and make it impossible for regular users to access it.",
+                  "mitigation": "Implement resource limits or DDoS protection.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 7,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 840,
+              "y": 430
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Website Config"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 3,
+            "id": "2c9e1b90-962a-4e95-9a8f-e3426825c8bc",
+            "data": {
+              "type": "tm.Store",
+              "name": "Website Config",
+              "description": "HTML and CSS for the website",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Read configuration",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "8d08e698-f701-4332-b0f2-e8b444a9c526",
+            "labels": [
+              "Read configuration"
+            ],
+            "source": {
+              "cell": "2c9e1b90-962a-4e95-9a8f-e3426825c8bc"
+            },
+            "target": {
+              "cell": "b173da5f-fbdf-47a2-824e-166d8b9a8097"
+            },
+            "vertices": [
+              {
+                "x": 730,
+                "y": 410
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTP(S)\nResponse",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "8454a98a-9ccd-4658-a87c-dbf784515e84",
+                  "title": "HTTP Connection",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Connecting via unsecured channels such as HTTP allows attackers to read information sent over the network.",
+                  "mitigation": "Make sure to always connect over HTTPS.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 14,
+                  "score": ""
+                }
+              ]
+            },
+            "id": "952facd9-37a6-4a06-a83b-0d4eb83c7681",
+            "labels": [
+              "HTTP(S)\nResponse"
+            ],
+            "source": {
+              "cell": "b173da5f-fbdf-47a2-824e-166d8b9a8097"
+            },
+            "target": {
+              "cell": "23047851-f0a1-41d6-a3e2-f2da7f19ac1d"
+            },
+            "vertices": [
+              {
+                "x": 470,
+                "y": 490
+              },
+              {
+                "x": 420,
+                "y": 490
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "HTTP(S) \nRequest",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "6b1a7455-c0f8-45aa-b8d8-eb20217ad98b",
+            "labels": [
+              "HTTP(S) \nRequest"
+            ],
+            "source": {
+              "cell": "23047851-f0a1-41d6-a3e2-f2da7f19ac1d"
+            },
+            "target": {
+              "cell": "b173da5f-fbdf-47a2-824e-166d8b9a8097"
+            },
+            "vertices": [
+              {
+                "x": 410,
+                "y": 430
+              },
+              {
+                "x": 470,
+                "y": 430
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Falco monitoring",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "f17c8dd6-4197-48a6-893d-6e3c166b9ee4",
+            "labels": [
+              "Falco monitoring"
+            ],
+            "source": {
+              "cell": "cf7631d7-f562-4488-b5db-801cc1d9e712"
+            },
+            "target": {
+              "cell": "3c506847-0579-4a3c-a4c4-e2dab0dc0905"
+            },
+            "vertices": [
+              {
+                "x": 1120,
+                "y": 426
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Falco logs collection",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "4d37b02a-52c2-4e11-a219-dbb078ef56a5",
+            "labels": [
+              "Falco logs collection"
+            ],
+            "source": {
+              "cell": "3c506847-0579-4a3c-a4c4-e2dab0dc0905"
+            },
+            "target": {
+              "cell": "5f594849-54db-4327-886c-8f9255772921"
+            },
+            "vertices": [
+              {
+                "x": 1290,
+                "y": 321
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Build",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "f87df5f3-6678-49a6-b7a0-82f7fad868df",
+            "labels": [
+              "Build"
+            ],
+            "source": {
+              "cell": "8957c357-7a4f-4d91-9209-45684ea3ec36"
+            },
+            "target": {
+              "cell": "06e5d92b-fdd5-4b7d-b8f6-a3c64fac8aea"
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "SSH Connection.",
+              "description": "Dev env to server, used to copy image and update image.",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": [
+                {
+                  "id": "9ec85c12-f5fd-42e9-9d5f-fddd2ea29c41",
+                  "title": "SSH Connection Disclosure",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Sensitive information, like SSH credentials, could be exposed. This makes it possible to listen in on confidential information.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 6,
+                  "score": ""
+                }
+              ]
+            },
+            "id": "99ee7cc5-e1e2-43f5-9eaf-9a6f22f4ed13",
+            "labels": [
+              "SSH Connection."
+            ],
+            "source": {
+              "cell": "b7bb9115-9689-4397-bbd9-84325f77b00c"
+            },
+            "target": {
+              "cell": "21b0bd9b-0dd1-4f3b-8b22-10a732650689"
+            },
+            "vertices": [
+              {
+                "x": 1160,
+                "y": 720
+              },
+              {
+                "x": 1180,
+                "y": 670
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Use",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "4ce3dae1-0a2f-4e86-8c69-48608cb8ae26",
+            "labels": [
+              "Use"
+            ],
+            "source": {
+              "cell": "1c63f48c-b05c-4cc2-a0ae-a1cbfe17b2ff"
+            },
+            "target": {
+              "cell": "8957c357-7a4f-4d91-9209-45684ea3ec36"
+            },
+            "vertices": [
+              {
+                "x": 860,
+                "y": 980
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Utilize config",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "422d1f2d-b12d-4bf4-9259-4ac4486bcf81",
+            "labels": [
+              "Utilize config"
+            ],
+            "source": {
+              "cell": "05c36b64-c9c1-466d-b415-cbf457dfc8f2"
+            },
+            "target": {
+              "cell": "8957c357-7a4f-4d91-9209-45684ea3ec36"
+            },
+            "vertices": [
+              {
+                "x": 860,
+                "y": 920
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "SSH Tunnel",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "bce407aa-d61a-41ce-abcd-fbdc7aa44cbe",
+            "labels": [
+              "SSH Tunnel"
+            ],
+            "source": {
+              "cell": "21b0bd9b-0dd1-4f3b-8b22-10a732650689"
+            },
+            "target": {
+              "cell": "b7bb9115-9689-4397-bbd9-84325f77b00c"
+            },
+            "vertices": [
+              {
+                "x": 1290,
+                "y": 730
+              },
+              {
+                "x": 1290,
+                "y": 780
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "c1b52b45-cb7a-4f23-8720-5d7f23df62d8",
+            "source": {
+              "cell": "b173da5f-fbdf-47a2-824e-166d8b9a8097"
+            },
+            "target": {
+              "x": 612,
+              "y": 330
+            }
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Data Flow",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": false,
+              "isPublicNetwork": false,
+              "protocol": "",
+              "threats": []
+            },
+            "id": "36484177-0217-4bb1-9183-5d666b64c77b",
+            "source": {
+              "cell": "1ef754a8-9ee8-4eb6-adbe-11a5850f9e27"
+            },
+            "target": {
+              "cell": "2c9e1b90-962a-4e95-9a8f-e3426825c8bc"
+            }
+          },
+          {
+            "position": {
+              "x": 1130,
+              "y": 465.9999999999999
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Docker Image"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 11,
+            "id": "1ef754a8-9ee8-4eb6-adbe-11a5850f9e27",
+            "data": {
+              "type": "tm.Store",
+              "name": "Docker Image",
+              "description": "Ready made docker image",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1360,
+              "y": 250
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Containers logs"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 12,
+            "id": "5f594849-54db-4327-886c-8f9255772921",
+            "data": {
+              "type": "tm.Store",
+              "name": "Containers logs",
+              "description": "Container monitoring via Falco",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "c3be76dc-0fe3-4943-aa6c-c5799e57ad49",
+                  "title": "Falco Logs Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "An attacker can tamper with log files to hide their intrusion.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 5,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 1160,
+              "y": 346.0000000000008
+            },
+            "size": {
+              "width": 60,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Falco"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 13,
+            "id": "3c506847-0579-4a3c-a4c4-e2dab0dc0905",
+            "data": {
+              "type": "tm.Process",
+              "name": "Falco",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": [
+                {
+                  "id": "7d0c2480-cc01-4419-b5e6-4bb747762a2e",
+                  "title": "Spoofing Falco",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "An attacker can spoof Falco to gain access to the system.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 3,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 590,
+              "y": 890
+            },
+            "size": {
+              "width": 180,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Website configuration files"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 14,
+            "id": "05c36b64-c9c1-466d-b415-cbf457dfc8f2",
+            "data": {
+              "type": "tm.Store",
+              "name": "Website configuration files",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "1b59fbbb-cec5-495b-b712-a25b0f867a40",
+                  "title": "Website Config File Tampering",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "An attacker can tamper with important configuration files.",
+                  "mitigation": "Features such as digital signatures can be implemented.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 4,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 640,
+              "y": 980.0000000000002
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Dockerfile"
+              },
+              "topLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 15,
+            "id": "1c63f48c-b05c-4cc2-a0ae-a1cbfe17b2ff",
+            "data": {
+              "type": "tm.Store",
+              "name": "Dockerfile",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "94d72084-349c-46c8-9d9a-ed5636bff4ec",
+                  "title": "Dockerfile Tampering",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Tampering",
+                  "description": "The dockerfile could be tampered with to allow security vulnerabilites in the final Docker image.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 961.9999999999992,
+              "y": 910.0000000000002
+            },
+            "size": {
+              "width": 80,
+              "height": 70
+            },
+            "attrs": {
+              "text": {
+                "text": "Docker"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": "4 3"
+              }
+            },
+            "visible": true,
+            "shape": "process",
+            "zIndex": 16,
+            "id": "8957c357-7a4f-4d91-9209-45684ea3ec36",
+            "data": {
+              "type": "tm.Process",
+              "name": "Docker",
+              "description": "Builds docker image",
+              "outOfScope": true,
+              "reasonOutOfScope": "Not required",
+              "hasOpenThreats": false,
+              "handlesCardPayment": false,
+              "handlesGoodsOrServices": false,
+              "isWebApplication": false,
+              "privilegeLevel": "",
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1130,
+              "y": 920.0000000000002
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Docker Image"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 17,
+            "id": "06e5d92b-fdd5-4b7d-b8f6-a3c64fac8aea",
+            "data": {
+              "type": "tm.Store",
+              "name": "Docker Image",
+              "description": "Includes website configuration files",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": false,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1340,
+              "y": 980.0000000000002
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "SSH credentials"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 18,
+            "id": "8b4ad4ac-f4f8-4476-86d9-4ba700851374",
+            "data": {
+              "type": "tm.Store",
+              "name": "SSH credentials",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1556.75,
+              "y": 520
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Credentials"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 19,
+            "id": "780b90a3-fc36-473e-8018-ad5f783916e5",
+            "data": {
+              "type": "tm.Store",
+              "name": "Credentials",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": true,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1560.5,
+              "y": 406.0000000000008
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "root"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 20,
+            "id": "25c1877f-3c42-4874-a979-5c5a68c3bbf2",
+            "data": {
+              "type": "tm.Actor",
+              "name": "root",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": true,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1378,
+              "y": 481.0000000000008
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 21,
+            "id": "00523469-fc5f-4268-9eab-9204211f6005",
+            "data": {
+              "type": "tm.Actor",
+              "name": "User",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": true,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 1330,
+              "y": 890
+            },
+            "size": {
+              "width": 120,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Credentials"
+              },
+              "topLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              },
+              "bottomLine": {
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "store",
+            "zIndex": 22,
+            "id": "331a105f-dd06-4757-8847-9334e0c5e238",
+            "data": {
+              "type": "tm.Store",
+              "name": "Credentials",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isALog": false,
+              "isEncrypted": false,
+              "isSigned": false,
+              "storesCredentials": true,
+              "storesInventory": false,
+              "threats": [
+                {
+                  "id": "18482016-30a5-49f8-b908-2daa5e6c2825",
+                  "title": "Credential Disclosure",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Information disclosure",
+                  "description": "Storing passwords in plainetext makes it much easier for attackers to steal login data.",
+                  "mitigation": "Properly hash and salt your passwords.",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 19,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 1180,
+              "y": 1010
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Student user"
+              },
+              "body": {
+                "stroke": "red",
+                "strokeWidth": 2.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 23,
+            "id": "96db8673-3673-4228-aa7a-0b1cc5ae887a",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Student user",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": true,
+              "providesAuthentication": true,
+              "threats": [
+                {
+                  "id": "8607f827-073e-45ba-898b-215f22f7fd1c",
+                  "title": "Student Spoofing",
+                  "status": "Open",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "Having access to the physical users machine allows the attacker to exploit many different vulnerabilites.",
+                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
+                }
+              ]
+            }
+          },
+          {
+            "position": {
+              "x": 678,
+              "y": 465.9999999999999
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "User | Root"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 24,
+            "id": "396e1fd2-772e-42f2-b9a9-80123d0d4ca6",
+            "data": {
+              "type": "tm.Actor",
+              "name": "User | Root",
+              "description": "",
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": true,
+              "threats": [
+                {
+                  "id": "2d133b1c-56f4-4f9e-9812-99eddd766fe3",
+                  "title": "User/Root Spoofing",
+                  "status": "Mitigated",
+                  "severity": "Medium",
+                  "type": "Spoofing",
+                  "description": "An attacker can impersonate the user to access the docker container.",
+                  "mitigation": "Use MFA (such as an app, or e-mail/SMS).",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 1,
+                  "score": ""
+                }
+              ]
+            }
+          }
+        ],
+        "description": "System includes: student's pc, cloud server and container."
+      }
+    ],
+    "diagramTop": 2,
+    "reviewer": "Linus Fulton",
+    "threatTop": 23
+  }
+}
